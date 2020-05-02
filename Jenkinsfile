@@ -17,6 +17,14 @@ pipeline {
         sh 'mvn test'
       }
     }
+    stage('log') {
+      steps {
+        timestamps{
+          logstash{
+	  }		
+        }
+     }
+    }
   }
 }
 
