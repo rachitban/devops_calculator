@@ -1,30 +1,42 @@
 pipeline {
   agent any
-  stages 
-    {
+  stages {
+          
     stage('Clean') {
-      steps {
-        sh 'mvn clean'
-      }
+        steps{    
+            logstash{
+                sh 'mvn clean'
+                echo "clean"
+            }
+        }
     }
+        
     stage('Compile') {
-      steps {
-        sh 'mvn compile'
-      }
+        steps{
+            logstash{
+                sh 'mvn compile'
+                echo "compile"
+            }
+        }
     }
     stage('Test') {
-      steps {
-        sh 'mvn test'
-      }
-    }
-    stage('log') {
-      steps {
-        timestamps{
-          logstash{
-	  }		
+        steps{    
+            logstash {
+                sh 'mvn test'
+                echo "test"
+            }
         }
-     }
     }
-  }
+    
+    stage('Build Image') {
+        steps{    
+            logstash {
+                script{
+                   def customimage=docker.build("myimage")
+                }
+            }
+        }
+    }
+    
+    }
 }
-
