@@ -10,6 +10,8 @@ public class Calculator {
 		System.out.println("Enter your choice: ");
 		System.out.println("Add : 1");
 		System.out.println("Subtract : 2");
+		System.out.println("Multiply : 3");
+		System.out.println("Divide : 4");
 		System.out.println("Exit : 5");
 		choice=sc.nextInt();
 		if(choice==5)
@@ -23,6 +25,12 @@ public class Calculator {
 		
 		if(choice==2)
 		    System.out.println("Result " + subtract(a,b));
+
+		if(choice==3)
+		    System.out.println("Result " + add(a,b));
+		
+		if(choice==4)
+		    System.out.println("Result " + subtract(a,b));
 			
 	}
 
@@ -34,6 +42,20 @@ public class Calculator {
 
 	public static int subtract(int a, int b) {
 		return a - b;
+	}
+	
+	public static int multiply(int a, int b) {
+		return a*b;
+	}
+
+	public static double divide(int a, int b) {
+		double result;
+		if (b == 0) {
+			throw new IllegalArgumentException("Divisor cannot divide by zero");
+		} else {
+			result = Double.valueOf(a)/Double.valueOf(b);
+		}
+		return result;
 	}
 	
 	
