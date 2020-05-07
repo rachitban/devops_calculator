@@ -27,10 +27,10 @@ public class Calculator {
 		    System.out.println("Result " + subtract(a,b));
 
 		if(choice==3)
-		    System.out.println("Result " + add(a,b));
+		    System.out.println("Result " + multiply(a,b));
 		
 		if(choice==4)
-		    System.out.println("Result " + subtract(a,b));
+		    System.out.println("Result " + divide(a,b));
 			
 	}
 
