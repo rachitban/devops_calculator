@@ -1,4 +1,9 @@
 pipeline {
+
+  environment{
+    registry="bently5050/calc"
+    registryCredential='dockerhub'
+  }
   agent any
   stages {
           
@@ -37,6 +42,19 @@ pipeline {
             }
         }
     }
+
+   stage('Deploy Image'){
+        steps{
+	    logstash{
+		script{
+		     dockerImage=docker.build registry + ":latest"
+		     docker.withRegistry('',registryCredential){
+			 dockerImage.push()			
+		    }		
+		}
+	   }
+      }
+   }
     
     }
 }
