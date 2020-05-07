@@ -14,7 +14,7 @@ pipeline {
     stage('Compile') {
         steps{
             logstash{
-                sh 'mvn compile'
+                sh 'mvn package'
                 echo "compile"
             }
         }
