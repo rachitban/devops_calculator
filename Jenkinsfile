@@ -58,17 +58,19 @@ pipeline {
 
   stage('Deploy') {
         steps {
-          script {
-            step([$class: "RundeckNotifier",
+	  logstash{
+            script {
+              step([$class: "RundeckNotifier",
                   includeRundeckLogs: true,
                   jobId: "c119f635-8b0c-48ea-9d2c-118764767cf1",
                   rundeckInstance: "Rundeck",
                   shouldFailTheBuild: true,
                   shouldWaitForRundeckJob: true,
                   tailLog: true])
-          }
-        }
-    }
+             }
+           }
+	 }
+       }
     
     }
 }
